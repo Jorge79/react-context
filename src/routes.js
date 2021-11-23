@@ -4,6 +4,7 @@ import Carrinho from "pages/Carrinho";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { UsuarioProvider } from "common/context/Usuario";
 import { CarrinhoProvider } from "common/context/Carrinho";
+import { PagamentoProvider } from "common/context/Pagamento";
 
 function Router() {
   return (
@@ -14,12 +15,14 @@ function Router() {
             <Login />
           </Route>
           <CarrinhoProvider>
-            <Route path="/feira">
-              <Feira />
-            </Route>
-            <Route path="/carrinho">
-              <Carrinho />
-            </Route>
+            <PagamentoProvider>
+              <Route path="/feira">
+                <Feira />
+              </Route>
+              <Route path="/carrinho">
+                <Carrinho />
+              </Route>
+            </PagamentoProvider>
           </CarrinhoProvider>
         </UsuarioProvider>
       </Switch>
